@@ -4,5 +4,5 @@ import "golang/base"
 
 func main() {
 	//base.RunnerExecute()
-	base.SystemPoolExecute()
+	base.LogExecute()
 }
