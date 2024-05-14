@@ -3,6 +3,6 @@ package main
 import "golang/base"
 
 func main() {
-	base.UsingWithFunction()
+	base.ReflectInvoke()
 	//base.LogExecute()
 }
