@@ -1,8 +1,8 @@
 package main
 
-import "golang/base"
+import "golang/sdk"
 
 func main() {
-	base.ReflectInvoke()
+	sdk.InitGorillaHandlerHttpServer()
 	//base.LogExecute()
 }
