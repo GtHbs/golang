@@ -3,6 +3,6 @@ package main
 import "golang/sdk"
 
 func main() {
-	sdk.InitGorillaHandlerHttpServer()
+	sdk.NegroniClassic()
 	//base.LogExecute()
 }
