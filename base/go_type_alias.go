@@ -93,12 +93,12 @@ func (t T1) m3() {
 }
 
 func StructAlias() {
-	my := MyStruct{}
+	//my := MyStruct{}
 	// base/go_type_alias.go:95:5: ambiguous selector my.m3
 	// 因为结构体中有T1和T2两种类型，并且T2为T1的别名，T1实现了m3接口，等于T2也实现了，
 	// 所以这里调用m3才会产生错误
 
-	my.m3()
+	//my.m3()
 
 }
 

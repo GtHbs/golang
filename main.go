@@ -1,8 +1,10 @@
 package main
 
-import "golang/base"
+import (
+	"golang/sdk"
+)
 
 func main() {
-	//sdk.InitNegroniMuxServer()
-	base.StructAlias()
+	sdk.BaseJson()
+	//base.StructAlias()
 }
