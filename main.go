@@ -1,8 +1,8 @@
 package main
 
-import "golang/sdk"
+import "golang/base"
 
 func main() {
-	sdk.NegroniClassic()
-	//base.LogExecute()
+	//sdk.InitNegroniMuxServer()
+	base.StructAlias()
 }

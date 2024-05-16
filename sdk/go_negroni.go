@@ -6,20 +6,30 @@ import (
 	"net/http"
 )
 
-func NegroniClassic() {
-	// New(NewRecovery(), NewLogger(), NewStatic(http.Dir("public")))
-	n := negroni.Classic()
-	n.UseHandler(NegroniHandle())
-	// 这里会从环境变量中探测PORT变量，替换端口号
-	n.Run(":8080")
+func InitNegorniServer() {
+	server := negroni.Classic()
+	server.UseHandler(negroniHandler())
+	server.Run(":8080")
+
 }
 
-func NegroniHandle() http.Handler {
-	return http.HandlerFunc(NegroniHandler)
+func negroniHandler() http.Handler {
+	return http.HandlerFunc(negroniHandle)
 }
 
-func NegroniHandler(rw http.ResponseWriter, r *http.Request) {
-	rw.Header().Set("Content-Type", "application/json")
-	rw.WriteHeader(http.StatusOK)
-	io.WriteString(rw, `{ "Name": "world" }`)
+func negroniHandle(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Add("content-type", "text/json")
+	io.WriteString(rw, `{"alive": true}`)
+}
+
+func InitNegroniMuxServer() {
+	server := negroni.Classic()
+	mux := http.NewServeMux()
+	mux.Handle("/", negroniHandler())
+	mux.HandleFunc("/test", func(rw http.ResponseWriter, r *http.Request) {
+		rw.Header().Add("content-type", "text/json")
+		io.WriteString(rw, `{"name": "alone"}`)
+	})
+	server.UseHandler(mux)
+	server.Run(":8080")
 }
